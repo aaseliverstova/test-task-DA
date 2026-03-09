@@ -68,6 +68,7 @@ def is_isomorphic(s: str, t: str) -> bool:
         map_st[cs] = ct
         map_ts[ct] = cs
     return True
+```
 
 Тело функции также представлено в файле solution.py.
 
@@ -81,6 +82,7 @@ def missing_number(nums):
     expected = n * (n + 1) // 2
     actual = sum(nums)
     return expected - actual
+```
 
 Тело функции также представлено в файле solution.py.
 
@@ -100,6 +102,7 @@ def prime_factors(n: int):
     if n > 1:
         factors.append(n)
     return factors
+```
 
 Тело функции также представлено в файле solution.py.
 
@@ -109,7 +112,15 @@ def prime_factors(n: int):
 
 ### Задание 1
 
-Запрос представлен в файле solution_SQL.sql.
+```sql
+select
+    id,
+    scores,
+    dense_rank() over (order by scores desc) as rating_position
+from examination;
+```
+
+Запрос также представлен в файле solution_SQL.sql.
 
 ### Задание 2
 
@@ -117,7 +128,18 @@ def prime_factors(n: int):
 
 ### Задание 3
 
-Запрос представлен в файле solution_SQL.sql.
+```sql
+select a.client_id
+from account a
+join transaction t
+  on t.account_id = a.id
+where t.type = 'buy'
+  and t.transaction_date >= current_date - interval '1 month'
+group by a.client_id
+having sum(t.amount) < 5000;
+```
+
+Запрос также представлен в файле solution_SQL.sql.
 
 ## Блок 4: Статистика и АБ-тесты
 
